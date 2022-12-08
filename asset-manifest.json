@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/personaltrainer/static/css/main.d9d06e0a.css",
+    "main.js": "/personaltrainer/static/js/main.65e7e3ca.js",
+    "static/js/787.e3fa38fa.chunk.js": "/personaltrainer/static/js/787.e3fa38fa.chunk.js",
+    "index.html": "/personaltrainer/index.html",
+    "main.d9d06e0a.css.map": "/personaltrainer/static/css/main.d9d06e0a.css.map",
+    "main.65e7e3ca.js.map": "/personaltrainer/static/js/main.65e7e3ca.js.map",
+    "787.e3fa38fa.chunk.js.map": "/personaltrainer/static/js/787.e3fa38fa.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d9d06e0a.css",
+    "static/js/main.65e7e3ca.js"
+  ]
+}
