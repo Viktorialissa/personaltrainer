@@ -5,6 +5,7 @@ import format from 'date-fns/format';
 import { API_getTrainings, API_trainings } from "../constants"; 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
+import EditTraining from "./editTraining";
 
 
 export default function Traininglist() {
@@ -20,14 +21,11 @@ export default function Traininglist() {
         {field: 'duration', headerName: 'Duration', sortable: true, filter: true},  
         {field: 'activity',headerName: 'Activity', sortable: true, filter: true},
         {field: 'customer', valueGetter: nameValueGetter, headerName: 'Name', sortable: true, filter: true, width: 300},
-       /* {
-    
-            width: 120,
-            cellRenderer: params => <EditCar data={params.data} updateCar={updateCar} />
-        }, */
+        {width: 150,
+            cellRenderer: params => <EditTraining data={params.data} editTraining={editTraining} />},
         {   field: "id",
             headerName: '',
-            width: 120, 
+            width: 160, 
             cellRenderer: params =>
              <Button size="small"
              color="warning"
@@ -66,6 +64,22 @@ export default function Traininglist() {
                 .catch(err => console.error(err))
             } 
            
+
+            const editTraining = (training, url) => {
+                
+                fetch(url, {
+                    method: 'PUT',
+                    headers: {'Content-type':'application/json'},
+                    body: JSON.stringify(training)
+                })
+                .then(response => {
+                    if (response.ok)
+                    getTrainings();
+                    else
+                    alert('Something went wrong');
+                })
+                .catch(err => console.error(err))
+            };
             
             return (
                 <>

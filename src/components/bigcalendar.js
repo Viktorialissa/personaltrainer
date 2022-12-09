@@ -50,9 +50,6 @@ export default function BigCalendar() {
         
     };
 
-	
-	console.log(trainings);
-
 	return (
 		<div className="container mt-3" style={{ height: "80vh" }}>
 			<Calendar

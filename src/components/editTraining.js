@@ -8,21 +8,28 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
+import { API_trainings } from '../constants';
 
 
-export default function AddTraining(props) {
+export default function EditTraining(props) {
   const [open, setOpen] = React.useState(false);
   const [training, setTraining] = React.useState({
     date: '',
     duration: '',
-    activity:'',
-    customer: props.customer.links[1].href
+    activity:''
 
   });
 
   const handleClickOpen = () => {
     setOpen(true);
+    console.log(props.data)
+    setTraining({
+        date: props.data.date,
+        duration: props.data.duration,
+        activity: props.data.activity
+    })
   };
+
 
   const handleClose = () => {
     setOpen(false);
@@ -30,7 +37,7 @@ export default function AddTraining(props) {
 
   const handleSave = () => {
     console.log(training);
-    props.addTraining(training)
+    props.editTraining(training, API_trainings + props.data.id)
     setOpen(false);
   }
 
@@ -41,11 +48,11 @@ export default function AddTraining(props) {
 
   return (
     <div>
-      <Button variant="outlined" onClick={handleClickOpen}>
-        Add Training
+      <Button size='small' onClick={handleClickOpen}>
+        Edit Training
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>New Training</DialogTitle>
+        <DialogTitle>Edit Training</DialogTitle>
         <DialogContent>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
             <DateTimePicker
